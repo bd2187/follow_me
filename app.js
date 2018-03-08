@@ -4,6 +4,15 @@ const express       = require('express');
 const app           = express();
 const path          = require('path');
 
+// Connect to MongoDB
+const database = require('./config/database');
+mongoose.connect(database);
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'Connection error:'));
+db.once('open', () => {
+    console.log('Connected to DB');
+});
+
 // Body Parser Middleware
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -19,7 +28,6 @@ app.set('view engine', 'pug');
 app.get('/', (req, res) => {
     res.render('index');
 });
-
 
 const port = 3000;
 app.listen(port, () => { console.log(`Now listening to Port ${port}`) });
