@@ -29,5 +29,37 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
+app.post('/postBlog', (req, res) => {
+
+    var BlogPost = require('./models/blogPostModel');
+
+    // Check if user is signed in
+
+    // Check if all required fields are filled
+
+    // Create new blogpost
+    var blog = new BlogPost({
+        title: 'Title',
+        body: 'Body',
+        author: 'Author',
+        likes: 0
+    });
+
+    // Save blog post
+    blog.save((err, blog) => {
+
+        if (err) {
+            res.status(500).send('Internal server error');
+        } else {
+            res.json({
+                status: 'success',
+                blog
+            });
+
+            // Render new pug template?
+        }
+    });
+});
+
 const port = 3000;
 app.listen(port, () => { console.log(`Now listening to Port ${port}`) });
