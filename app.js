@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
-app.post('/postBlog', (req, res) => {
+app.post('/post/add', (req, res) => {
 
     var BlogPost = require('./models/blogPostModel');
 
@@ -59,6 +59,20 @@ app.post('/postBlog', (req, res) => {
             // Render new pug template?
         }
     });
+});
+
+app.post('/edit/:id/:title/:body/:author', (req, res) => {
+
+    var BlogPost = require('./models/blogPostModel');
+
+    // Check if user is logged in
+
+    // Check if all required fields are filled
+
+    // Find blog post by id
+
+    // Edit contents of blog
+
 });
 
 const port = 3000;
