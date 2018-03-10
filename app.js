@@ -33,6 +33,5 @@ app.get('/', (req, res) => {
 // Additional Routes
 app.use('/blog', blogRoutes);
 
-
 const port = 3000;
 app.listen(port, () => { console.log(`Now listening to Port ${port}`) });
