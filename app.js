@@ -30,7 +30,7 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
-// Routes
+// Additional Routes
 app.use('/blog', blogRoutes);
 
 

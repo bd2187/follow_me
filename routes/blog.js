@@ -59,7 +59,22 @@ router.post('/edit/:id/:title/:body/:author', (req, res) => {
         }
     });
     // Edit contents of blog
+});
 
+router.delete('/delete/:id', (req, res) => {
+    const { id } = req.params;
+    
+    // Check if user is logged in
+    BlogPost.remove({ _id: id }, (err) => {
+        if (err) {
+            res.status(500).send('Internal server error');
+        } else {
+            res.json({
+                status: 'success',
+                message: 'Your post was deleted'
+            });
+        };
+    });
 });
 
 module.exports = router;
