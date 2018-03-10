@@ -4,6 +4,7 @@ const express       = require('express');
 const app           = express();
 const path          = require('path');
 const blogRoutes    = require('./routes/blog');
+const userRoutes    = require('./routes/user');
 
 // Connect to MongoDB
 const database = require('./config/database');
@@ -32,6 +33,7 @@ app.get('/', (req, res) => {
 
 // Additional Routes
 app.use('/blog', blogRoutes);
+app.use('/user', userRoutes);
 
 const port = 3000;
 app.listen(port, () => { console.log(`Now listening to Port ${port}`) });
