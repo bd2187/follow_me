@@ -1,1 +1,8 @@
-h1 hello
+extends layout.pug
+
+block content
+    form(action="/user/login" method="post")
+        input.login-row(type="text" name="username" placeholder="Username")
+        input.login-row(type="password" name="password" placeholder="Password")
+
+        button(type="submit") Submit
