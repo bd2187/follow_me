@@ -30,6 +30,7 @@ app.set('view engine', 'pug');
 // Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
+require('./config/passport')(passport);
 
 // Root Route
 app.get('/', (req, res) => {
