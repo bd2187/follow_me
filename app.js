@@ -3,6 +3,7 @@ const mongoose      = require('mongoose');
 const express       = require('express');
 const app           = express();
 const path          = require('path');
+const passport      = require('passport');
 const blogRoutes    = require('./routes/blog');
 const userRoutes    = require('./routes/user');
 
@@ -25,6 +26,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 // View Engine Middleware
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Root Route
 app.get('/', (req, res) => {
