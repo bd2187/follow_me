@@ -5,11 +5,15 @@ const passport = require('passport');
 
 const User = require('../models/userModel');
 
-router.post(
-    '/register/:firstName/:lastName/:username/:password/:email/:confirmPassword',
-    (req, res) => {
-    const { firstName, lastName, username, password, email, confirmPassword } = req.params;
+router.get('/register', (req, res) => {
+    res.render('register.pug');
+});
 
+router.post(
+    '/register',
+    (req, res) => {
+    const { firstName, lastName, username, password, email, confirmPassword } = req.body;
+    
     bcrypt.genSalt(10, (err, salt) => {
 
         bcrypt.hash(password, salt, (err, hash) => {
@@ -29,10 +33,7 @@ router.post(
                         console.log(err);
                         res.status(500).send('Internal server error.');
                     } else { 
-                        res.json({
-                            status: 'success',
-                            user
-                        });
+                        res.redirect('/');
                     }
                 });
             }
@@ -40,10 +41,10 @@ router.post(
     });
 });
 
-router.post('/login', (req, res) => {
+router.post('/login', (req, res, next) => {
     passport.authenticate('local', {
         successRedirect: '/',
-        failureRedirect: '/user/login',
+        failureRedirect: '/',
         failureFlash: false
     })(req, res, next);
 });
