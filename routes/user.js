@@ -9,9 +9,7 @@ router.get('/register', (req, res) => {
     res.render('register.pug');
 });
 
-router.post(
-    '/register',
-    (req, res) => {
+router.post('/register', (req, res) => {
     const { firstName, lastName, username, password, email, confirmPassword } = req.body;
     
     bcrypt.genSalt(10, (err, salt) => {
