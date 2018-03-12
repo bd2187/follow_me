@@ -4,6 +4,7 @@ const express       = require('express');
 const app           = express();
 const path          = require('path');
 const passport      = require('passport');
+const session       = require('express-session');
 const blogRoutes    = require('./routes/blog');
 const userRoutes    = require('./routes/user');
 
@@ -27,10 +28,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+require('./config/passport')(passport);
+
 // Passport middleware
+app.use(session({ secret: 'anything' }));
 app.use(passport.initialize());
 app.use(passport.session());
-require('./config/passport')(passport);
+
+
+// Set up local variables
+app.get('*', (req, res, next) => {
+    res.locals.user = req.user || null;
+    res.locals.login = req.isAuthenticated();
+    next();
+});
 
 // Root Route
 app.get('/', (req, res) => {
