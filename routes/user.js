@@ -39,6 +39,10 @@ router.post('/register', (req, res) => {
     });
 });
 
+router.get('/login', (req, res) => {
+    res.render('login');
+});
+
 router.post('/login', (req, res, next) => {
     passport.authenticate('local', (err, user) => {
 
@@ -57,7 +61,7 @@ router.post('/login', (req, res, next) => {
                 console.log(`ERROR: ${err}`);
                 return next(err);
             }            
-            
+
             return res.redirect('/');
         });
 
