@@ -1,0 +1,12 @@
+extends layout.pug
+
+block content
+    div.login-container
+        div.logo
+            h1 Follow Me
+            <i class="fas fa-plus"></i>
+        form(action="/user/login" method="post")
+            input.login-row(type="text" name="username" placeholder="Username")
+            input.login-row(type="password" name="password" placeholder="Password")
+
+            button(type="submit") Submit
