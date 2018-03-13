@@ -1,0 +1,67 @@
+* {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, p {
+    margin: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.logo {
+    display: flex;
+    font-family: 'Lobster', cursive;
+    color: #781706;
+    font-size: 1.25em;
+    margin: 0.5em 0;
+    cursor: default;
+}
+
+section {
+    min-height: 100vh;
+    background: #E8E5D0;
+    position: relative;
+}
+
+.login-container {
+    position: absolute;
+    top: 40%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    /* background: green; */
+    display: flex;
+    flex-direction:column;
+    width: 75%;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.login-container form,
+.login-container .login-row,
+.login-container button {
+    width: 100%;
+}
+
+.login-container form {
+    max-width: 350px;
+}
+
+.login-row {
+    display: block;
+}
+
+.login-container input,
+.login-container button {
+    padding: 0.5em;
+}
+
+.login-container button {
+    margin: 1em 0;
+    background: #4698E8;
+    color: #fff;
+}
