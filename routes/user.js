@@ -40,10 +40,27 @@ router.post('/register', (req, res) => {
 });
 
 router.post('/login', (req, res, next) => {
-    passport.authenticate('local', {
-        successRedirect: '/',
-        failureRedirect: '/',
-        failureFlash: false
+    passport.authenticate('local', (err, user) => {
+
+        if (err){
+            console.log(`ERROR: ${err}`);
+            return next(err);
+        }
+
+        if (!user) {
+            console.log('Either username or password is incorrect');
+            return res.render('index');
+        }
+
+        req.login(user, (err) => {
+            if (err) {
+                console.log(`ERROR: ${err}`);
+                return next(err);
+            }            
+            
+            return res.redirect('/');
+        });
+
     })(req, res, next);
 });
 
