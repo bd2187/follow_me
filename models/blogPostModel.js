@@ -11,7 +11,7 @@ var blogSchema = new Schema({
         type: 'String',
         required: true
     },
-    author: {
+    userID: {
         type: 'String',
         required: true
     },
