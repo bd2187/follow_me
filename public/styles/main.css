@@ -43,8 +43,16 @@ section {
 
 .login-container form,
 .login-container .login-row,
+.login-container p,
 .login-container button {
     width: 100%;
+}
+
+.login-container p {
+    padding: 0.5em;
+    text-align: center;
+    margin: 0.5em 0;
+    background: rgba(0, 0, 0, 0.2);
 }
 
 .login-container form {
@@ -61,7 +69,7 @@ section {
 }
 
 .login-container button {
-    margin: 1em 0;
+    margin: 0.5em 0;
     background: #4698E8;
     color: #fff;
 }
