@@ -10,6 +10,9 @@ h1, h2, p {
 
 body {
     font-family: 'Roboto', sans-serif;
+    min-height: 100vh;
+    position: relative;
+    background: #E8E5D0;
 }
 
 .logo {
@@ -19,12 +22,6 @@ body {
     font-size: 1.25em;
     margin: 0.5em 0;
     cursor: default;
-}
-
-section {
-    min-height: 100vh;
-    background: #E8E5D0;
-    position: relative;
 }
 
 .login-container {
@@ -61,6 +58,7 @@ section {
 
 .login-row {
     display: block;
+    margin: 0.25em 0;
 }
 
 .login-container input,
