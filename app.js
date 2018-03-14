@@ -38,16 +38,39 @@ app.use(passport.session());
 
 // Set up local variables
 app.get('*', (req, res, next) => {
-    res.locals.user = req.user || null;
-    res.locals.login = req.isAuthenticated();
-    console.log(res.locals.user);
-    console.log(res.locals.login);
+    res.locals.USER = req.user || null;
+    console.log(`USER: ${res.locals.USER}`);
     next();
 });
 
 // Root Route
 app.get('/', (req, res) => {
-    res.render('index');
+    return (res.locals.USER) ? res.redirect('/dashboard') : res.redirect('/user/login');    
+});
+
+app.get('/dashboard', (req, res) => {
+    try {
+        const { USER } = res.locals;
+        const userID = USER._id;
+        
+        // parse through blog collection and populate dashboard with user's blog posts
+        var Blog = require('./models/blogPostModel');
+        Blog.find({ userID }, (err, blogs) => {
+            if (err) {
+                console.log(err);
+                return;
+            } else {
+                res.render('dashboard', {
+                    blogs
+                });
+            }
+        });
+    } catch(err) {
+        console.log(err);
+        res.redirect('/user/login');
+    }
+
+    
 });
 
 // Additional Routes
