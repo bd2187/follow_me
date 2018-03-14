@@ -8,5 +8,7 @@ block content
         form(action="/user/login" method="post")
             input.login-row(type="text" name="username" placeholder="Username")
             input.login-row(type="password" name="password" placeholder="Password")
-
+            if message 
+                p= message
+            
             button(type="submit") Submit
