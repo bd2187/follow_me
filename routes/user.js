@@ -53,7 +53,9 @@ router.post('/login', (req, res, next) => {
 
         if (!user) {
             console.log('Either username or password is incorrect');
-            return res.render('index');
+            return res.render('login', {
+                message: 'Your email or password were incorrect.'
+            });
         }
 
         req.login(user, (err) => {
