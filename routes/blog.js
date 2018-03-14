@@ -11,9 +11,9 @@ router.post('/post/add', (req, res) => {
 
     // Create new blogpost
     var blog = new BlogPost({
-        title: 'Blog',
+        title: 'MyBlog',
         body: 'Body',
-        author: 'Author',
+        userID: '5aa5bbaee4353a06e2a27ec5',
         likes: 0
     });
 
@@ -33,9 +33,9 @@ router.post('/post/add', (req, res) => {
     });
 });
 
-router.post('/edit/:id/:title/:body/:author', (req, res) => {
+router.post('/edit/:id/:title/:body/:userID', (req, res) => {
 
-    const {  id, title, body, author } = req.params;    
+    const {  id, title, body, userID } = req.params;    
 
     // Check if user is logged in
 

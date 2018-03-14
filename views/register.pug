@@ -1,12 +1,16 @@
 extends layout.pug
 
 block content
-    form(action="/user/register" method="post")
-        input(type="text" name="firstName" placeholder="First name")
-        input(type="text" name="lastName" placeholder="Last name")
-        input(type="text" name="email" placeholder="Email")
-        input(type="text" name="username" placeholder="Username")
-        input(type="password" name="password" placeholder="Password")
-        input(type="password" name="confirmPassword" placeholder="Confirm Password")
-
-        button(type="submit") Sign Up
+    div.login-container
+        div.logo
+            h1 Follow Me
+            <i class="fas fa-plus"></i>
+        form(action="/user/register" method="post")
+            input.login-row(type="text" name="email" placeholder="Email")
+            input.login-row(type="text" name="username" placeholder="Username")
+            input.login-row(type="password" name="password" placeholder="Password")
+            input.login-row(type="password" name="confirmPassword" placeholder="Confirm Password")
+            if message 
+                p= message
+            
+            button(type="submit") Sign up

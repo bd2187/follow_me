@@ -10,5 +10,18 @@ html(lang="en")
         link(href="https://fonts.googleapis.com/css?family=Lobster|Roboto:300,400,900" rel="stylesheet")
         title Follow Me
     body
+        header
+            if USER
+                ul
+                    li
+                        a(href="/dashboard") Dashboard
+                    li
+                        a(href="/user/logout") Logout
+            else
+                ul
+                    li
+                        a(href="/user/login") Login
+                    li
+                        a(href="/user/register") Sign up
         section
             block content
