@@ -71,3 +71,36 @@ body {
     background: #4698E8;
     color: #fff;
 }
+
+.blog-collection-container {
+    /* background: orange; */
+    width: 90%;
+    margin: 0 auto;
+}
+
+.blog-container {
+    margin: 0.75em 0;
+    background: #fff;
+    padding: 1.5em;
+    border-radius: 10px;
+    color: #2C2E2D;
+}
+
+.blog-section {
+    /* background: green; */
+    margin: 0.5em 0;
+}
+
+.blog-container .blog-header,
+.blog-container .blog-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.blog-links li {
+    display: inline-block;
+    margin: 0 5px;
+    text-align: center;
+    color: #8A8F8D;
+}
