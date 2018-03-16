@@ -1,4 +1,12 @@
 extends layout
 
 block content
-    h1 Dashboard
+    div.blog-collection-container
+        if blogs.length > 0
+            each blog in blogs
+                div.blog-container
+                    h1=blog.title
+                    p=blog.body
+                    p=USER.username
+        else
+            p You have no blogs
