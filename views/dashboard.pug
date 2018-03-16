@@ -5,8 +5,25 @@ block content
         if blogs.length > 0
             each blog in blogs
                 div.blog-container
-                    h1=blog.title
-                    p=blog.body
-                    p=USER.username
+                    div.blog-header.blog-section
+                        h1=blog.title
+                        //- p=blog.date
+                        p 3/14/18
+                    div.blog-content.blog-section
+                        p=blog.body
+                    div.blog-footer.blog-section
+                        div.blog-author
+                            p=USER.username
+                        div.blog-links
+                            ul
+                                li
+                                    a
+                                        <i class="fas fa-trash"></i>
+                                li
+                                    a
+                                        <i class="fas fa-edit"></i>                    
+                                li
+                                    a
+                                        <i class="fab fa-twitter"></i>                       
         else
             p You have no blogs
