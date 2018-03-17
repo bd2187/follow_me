@@ -30,7 +30,7 @@ const User = {
             // Populate modal
             editBlogTitle.value = blogTitle;
             editBlogBody.value = blogBody;
-
+            editBlogBody.focus();
         });
     }
 }
