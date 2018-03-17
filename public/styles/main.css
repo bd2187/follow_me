@@ -104,3 +104,29 @@ body {
     text-align: center;
     color: #8A8F8D;
 }
+
+.blog-links a:visited {
+    color: #8A8F8D;
+}
+
+#editBlogModal {
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0; 
+    display: none;   
+}
+
+.modal-content {
+    background: #fff;
+    width: 90%;
+    margin: 100px auto;
+    height: 500px;
+    border-radius: 10px;
+}
+
+.blog-input {
+    border: 1px solid #000;
+}
