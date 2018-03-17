@@ -24,7 +24,7 @@ block content
                                         <i class="fas fa-edit"></i>                    
                                 li
                                     a(href="#")
-                                        <i class="fab fa-twitter"></i>   
+                                        <i class="fab fa-twitter"></i>                           
                         input(type="hidden" value=blog.id class="blog-id")
                         input(type="hidden" value=blog.title class="blog-title")
                         input(type="hidden" value=blog.body class="blog-body")
@@ -36,5 +36,6 @@ block content
                     div.blog-header.blog-section
                         input(class="blog-input edit-blog-title" type="text")
                     div.blog-content.blog-section
-                        input(class="blog-input edit-blog-body" type="text")
-                    div.blog-footer.blog-section
+                        textarea(class="blog-input edit-blog-body")
+                    div.modal-footer.clearfix
+                        button(style="background: red; float:right;" class="save-blog-changes-btn") SAVE
