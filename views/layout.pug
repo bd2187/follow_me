@@ -25,3 +25,11 @@ html(lang="en")
                         a(href="/user/register") Sign up
         section
             block content
+        footer                        
+            script(type="text/javascript" src="/javascript/main.js")
+            script.
+                var local_data = !{JSON.stringify(USER)}                
+                if (local_data) {
+                    User.init(local_data);
+                }
+                
