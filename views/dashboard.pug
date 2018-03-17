@@ -17,13 +17,24 @@ block content
                         div.blog-links
                             ul
                                 li
-                                    a
+                                    a(href="#")
                                         <i class="fas fa-trash"></i>
                                 li
-                                    a
+                                    a.edit-blog(href="#")
                                         <i class="fas fa-edit"></i>                    
                                 li
-                                    a
-                                        <i class="fab fa-twitter"></i>                       
+                                    a(href="#")
+                                        <i class="fab fa-twitter"></i>   
+                        input(type="hidden" value=blog.id class="blog-id")
+                        input(type="hidden" value=blog.title class="blog-title")
+                        input(type="hidden" value=blog.body class="blog-body")
         else
             p You have no blogs
+        div#editBlogModal
+            div.modal-content
+                div.blog-container
+                    div.blog-header.blog-section
+                        input(class="blog-input edit-blog-title" type="text")
+                    div.blog-content.blog-section
+                        input(class="blog-input edit-blog-body" type="text")
+                    div.blog-footer.blog-section
