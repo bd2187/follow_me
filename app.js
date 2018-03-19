@@ -60,7 +60,7 @@ app.get('/dashboard', (req, res) => {
                 console.log(err);
                 return;
             } else {
-                console.log(blogs);
+                
                 res.render('dashboard', {
                     blogs
                 });

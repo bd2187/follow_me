@@ -4,13 +4,13 @@ block content
     div.blog-collection-container
         if blogs.length > 0
             each blog in blogs
-                div.blog-container
+                div(class="blog-container" id=blog._id)
                     div.blog-header.blog-section
                         h1=blog.title
                         //- p=blog.date
                         p 3/14/18
                     div.blog-content.blog-section
-                        p=blog.body
+                        p.blog-text=blog.body
                     div.blog-footer.blog-section
                         div.blog-author
                             p=USER.username
@@ -27,7 +27,7 @@ block content
                                         <i class="fab fa-twitter"></i>                           
                         input(type="hidden" value=blog.id class="blog-id")
                         input(type="hidden" value=blog.title class="blog-title")
-                        input(type="hidden" value=blog.body class="blog-body")
+                        input(type="hidden" value=blog.body class="blog-body")                    
         else
             p You have no blogs
         div#editBlogModal
@@ -37,5 +37,7 @@ block content
                         input(class="blog-input edit-blog-title" type="text")
                     div.blog-content.blog-section
                         textarea(class="blog-input edit-blog-body")
+                        div.loader-container
+                            div.loader
                     div.modal-footer.clearfix
                         button(style="background: red; float:right;" class="save-blog-changes-btn") SAVE

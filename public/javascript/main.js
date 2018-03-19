@@ -34,18 +34,36 @@ const User = {
             });
             
             saveBtn.addEventListener('click', function(e) {
+
+                // Display loading wheel
+                const loaderEl = document.getElementsByClassName('loader-container')[0];
+                loaderEl.style.display = 'block';
+                editBlogBody.style.display = 'none';
+
+                // Make AJAX request
                 ajaxRequest(`/blog/edit/${blogID}/${editBlogTitle.value}/${editBlogBody.value}/${User.id}`, 'POST')
                 .then(function(res) {
-                    console.log(res);
+                    
+                    // Update UI with Success
+                    const { status, title, body, blogID } = res;
+                    const blogToUpdate = document.getElementById(blogID);
+                    blogToUpdate.getElementsByTagName('h1')[0].textContent = title;
+                    blogToUpdate.getElementsByClassName('blog-text')[0].textContent = body;
+
+                    loaderEl.style.display = 'none';
+                    editBlogBody.style.display = 'block';
+
                 })
                 .catch(function(err) {
+
+                    // Update UI with Error
                     console.log(err);
                 });
             });
 
         });
     }
-}
+};
 
 
 function ajaxRequest(url, method) {
