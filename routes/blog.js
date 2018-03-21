@@ -36,35 +36,25 @@ router.post('/post/add', (req, res) => {
 router.post('/edit/:id/:title/:body/:userID', (req, res) => {
 
     const {  id, title, body, userID } = req.params; 
-    // Check if user is logged in
 
-    // Check if all required fields are filled
-
-    // Find blog post by id
-    BlogPost.findOne({ _id: id }, (err, blogPost) => {
-        if (err) {
-            res.status(500).send('Internal server error');
-        } else {
-            blogPost.title = title;
-            blogPost.body = body;
-
-            blogPost.save((err, updatedBlogPost) => {
-                if (err) {
-                    res.status(500).send('Internal server error');
-                } else {
-                    console.log(updatedBlogPost);
-                    res.json({
-                        status: 'success',
-                        title: updatedBlogPost.title,
-                        body: updatedBlogPost.body,
-                        blogID: updatedBlogPost._id
-                    });
-                    // res.json(updatedBlogPost);
-                }
-            });
-        }
+    BlogPost.findOne({_id: id})
+    .then(function(blogPost) {
+        blogPost.title = title;
+        blogPost.body = body;
+        return blogPost.save()
+    })
+    .then(function(updatedBlogPost) {
+        res.json({
+            status: 'success',
+            title: updatedBlogPost.title,
+            body: updatedBlogPost.body,
+            blogID: updatedBlogPost._id
+        });
+    })
+    .catch(function(err) {
+        res.status(500).send('Internal server error');
     });
-    // Edit contents of blog
+
 });
 
 router.delete('/delete/:id', (req, res) => {
