@@ -55,16 +55,14 @@ app.get('/dashboard', (req, res) => {
         
         // parse through blog collection and populate dashboard with user's blog posts
         var Blog = require('./models/blogPostModel');
-        Blog.find({ userID }, (err, blogs) => {
-            if (err) {
-                console.log(err);
-                return;
-            } else {
-                
-                res.render('dashboard', {
-                    blogs
-                });
-            }
+        Blog.find({userID})
+        .then(function(blogs) {            
+            res.render('dashboard', {
+                blogs
+            });
+        })
+        .catch(function(err) {
+            console.log(err);
         });
     } catch(err) {
         console.log(`User isn't logged in. Redirected to login page.`);
